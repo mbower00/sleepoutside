@@ -3,10 +3,9 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   let cartItems = getLocalStorage("so-cart");
   if (cartItems !== null) {
-
-    // if cartItems is not null, but is not an array, fit it in an array... 
+    // if cartItems is not null, but is not an array, fit it in an array...
     if (cartItems.constructor != [].constructor) {
-      cartItems = [cartItems]
+      cartItems = [cartItems];
     }
 
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
