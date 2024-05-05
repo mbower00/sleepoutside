@@ -1,9 +1,17 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  let cartItems = getLocalStorage("so-cart");
+  if (cartItems !== null) {
+
+    // if cartItems is not null, but is not an array, fit it in an array... 
+    if (cartItems.constructor != [].constructor) {
+      cartItems = [cartItems]
+    }
+
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  }
 }
 
 function cartItemTemplate(item) {
