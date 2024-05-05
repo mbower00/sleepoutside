@@ -6,6 +6,8 @@ function addProductToCart(product) {
 
   if (cart === null) {
     cart = [];
+  } else if (cart.constructor != [].constructor) {
+    cart = [cart];
   }
 
   cart.push(product);
